@@ -27,8 +27,9 @@ class ManagerTest {
         manager.add(fourth);
 
         Product[] expected = new Product[]{second, third, fourth};
-        assertArrayEquals( expected, repository.removeById(1));
+        assertArrayEquals(expected, repository.removeById(1));
     }
+
     @Test
     void shouldRemoveByIdFailed() {
         manager.add(first);
@@ -39,6 +40,17 @@ class ManagerTest {
         assertThrows(NotFoundException.class, () -> repository.removeById(5));
 
     }
+    @Test
+    void shouldRemoveByIdFailed2() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+
+        Product[] expected = new Product[]{second, third, fourth};
+        assertArrayEquals(expected, repository.removeById(5));
+
+    }
 
     @Test
     void shouldAdd() {
@@ -47,7 +59,7 @@ class ManagerTest {
         manager.add(second);
 
         Product[] expected = new Product[]{first, second};
-        assertArrayEquals( expected, repository.findAll());
+        assertArrayEquals(expected, repository.findAll());
 
     }
 
@@ -117,14 +129,17 @@ class ManagerTest {
     void shouldMatches1() {
         assertTrue(manager.matches(first, "iPhone"));
     }
+
     @Test
     void shouldMatches2() {
         assertTrue(manager.matches(first, "iPho"));
     }
+
     @Test
     void shouldMatches3() {
         assertTrue(manager.matches(first, "USA"));
     }
+
     @Test
     void shouldMatches4() {
         assertFalse(manager.matches(first, "Пушкин"));
