@@ -40,17 +40,7 @@ class ManagerTest {
         assertThrows(NotFoundException.class, () -> repository.removeById(5));
 
     }
-    @Test
-    void shouldRemoveByIdFailed2() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
 
-        Product[] expected = new Product[]{second, third, fourth};
-        assertArrayEquals(expected, repository.removeById(5));
-
-    }
 
     @Test
     void shouldAdd() {
