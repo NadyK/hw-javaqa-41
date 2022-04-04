@@ -19,27 +19,6 @@ class ManagerTest {
     Product third = new Smartphone(3, "iPhone-6", 200, "USA");
     Product fourth = new Book(4, "Android", 300, "China");
 
-    @Test
-    void shouldRemoveByIdSuccess() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
-
-        Product[] expected = new Product[]{second, third, fourth};
-        assertArrayEquals(expected, repository.removeById(1));
-    }
-
-    @Test
-    void shouldRemoveByIdFailed() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
-
-        assertThrows(NotFoundException.class, () -> repository.removeById(5));
-
-    }
 
 
     @Test
